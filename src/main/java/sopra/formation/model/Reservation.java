@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,7 +29,7 @@ public class Reservation {
 	private StatutReservation confirme;
 	@OneToMany(mappedBy = "reservation")
 	private List<Billet> billet= new ArrayList<Billet>();
-	@OneToOne(mappedBy = "")
+	@OneToOne(mappedBy ="reservation")
 	private Passager passager;
 	
 	public Reservation(Integer numero, Date dtReservation, StatutReservation confirme) {
