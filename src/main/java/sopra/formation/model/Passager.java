@@ -25,13 +25,13 @@ public class Passager {
 	private String numeroIdentite;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "typeId")
-	private TypeIdentite typeIdentite;
+	private TypeIdentité typeIdentite;
 	@OneToOne
 	@JoinColumn(name="reservation_id")
 	private Reservation reservation;
 	
 
-	public Passager(Long id, String nom, String prenom, String numeroIdentite, TypeIdentite typeIdentite,
+	public Passager(Long id, String nom, String prenom, String numeroIdentite, TypeIdentité typeIdentite,
 			Reservation reservation) {
 		super();
 		this.id = id;
@@ -86,11 +86,11 @@ public class Passager {
 		this.numeroIdentite = numeroIdentite;
 	}
 
-	public TypeIdentite getTypeIdentite() {
+	public TypeIdentité getTypeIdentite() {
 		return typeIdentite;
 	}
 
-	public void setTypeIdentite(TypeIdentite typeIdentite) {
+	public void setTypeIdentite(TypeIdentité typeIdentite) {
 		this.typeIdentite = typeIdentite;
 	}
 	

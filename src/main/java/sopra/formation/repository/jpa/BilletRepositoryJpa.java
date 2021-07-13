@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 import sopra.formation.Application;
 import sopra.formation.model.Billet;
 import sopra.formation.model.Filiere;
+import sopra.formation.model.Matiere;
 import sopra.formation.repository.IBilletRepository;
 
 public class BilletRepositoryJpa implements IBilletRepository{
@@ -26,7 +27,7 @@ public class BilletRepositoryJpa implements IBilletRepository{
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Billet> query = em.createQuery("select b from Billet f", Billet.class);
+			TypedQuery<Billet> query = em.createQuery("select b from Billet b", Billet.class);
 
 			billets = query.getResultList();
 
@@ -48,20 +49,86 @@ public class BilletRepositoryJpa implements IBilletRepository{
 
 	@Override
 	public Billet findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Billet billet = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			billet = em.find(Billet.class, id);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return billet;
 	}
 
 	@Override
 	public Billet save(Billet obj) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			obj = em.merge(obj);
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return obj;
 	}
 
 	@Override
 	public void delete(Billet obj) {
-		// TODO Auto-generated method stub
-		
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEntityManagerFactory().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			em.remove(em.merge(obj));
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
 	}
 
 }
