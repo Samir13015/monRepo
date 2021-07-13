@@ -1,6 +1,7 @@
 package sopra.formation.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "AirlineCompagnyFly")
+@Table (name = "AirlineCompagnyFlight")
 public class CompagnieAerienneVol {
 	
 	@Id
@@ -26,7 +27,13 @@ public class CompagnieAerienneVol {
 	private Vol vol;
 	@OneToMany (mappedBy = "compagnieAeriennes")
 	private List<CompagnieAerienne> compagnieAeriennes = new ArrayList<CompagnieAerienne>();
+
 	
+	
+	public CompagnieAerienneVol() {
+		super();
+	}
+
 
 	public CompagnieAerienneVol(Long id, String numeroVol, Vol vol, List<CompagnieAerienne> compagnieAeriennes) {
 		super();
