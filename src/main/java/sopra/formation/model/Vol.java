@@ -38,7 +38,7 @@ import javax.persistence.TemporalType;
 		@Column (name="nbPlaceAvailable")
 		private int nbPlaceDispo;
 		@OneToOne (mappedBy = "depart")
-		private Aeoroport aeroDepart;
+		private Aeroport aeroDepart;
 		@OneToOne (mappedBy = "arrivee")
 		private Aeroport aeroArrivee;
 		@OneToMany(mappedBy = "billet")
