@@ -23,7 +23,7 @@ public class VolRepositoryJpa {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Vol> query = em.createQuery("select p from Vol p", Vol.class);
+			TypedQuery<Vol> query = em.createQuery("select v from Vol v", Vol.class);
 
 			vols = query.getResultList();
 

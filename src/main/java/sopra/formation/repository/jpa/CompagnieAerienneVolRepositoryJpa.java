@@ -22,7 +22,7 @@ public class CompagnieAerienneVolRepositoryJpa {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<CompagnieAerienneVol> query = em.createQuery("select p from CompagnieAerienneVol p", CompagnieAerienneVol.class);
+			TypedQuery<CompagnieAerienneVol> query = em.createQuery("select c from CompagnieAerienneVol c", CompagnieAerienneVol.class);
 
 			compagnieAerienneVols = query.getResultList();
 
