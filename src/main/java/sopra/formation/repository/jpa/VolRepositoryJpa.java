@@ -7,12 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.model.CompagnieAerienneVol;
+import sopra.formation.Application;
+import sopra.formation.model.Vol;
 
-public class CompagnieAerienneVolRepositoryJpa {
+public class VolRepositoryJpa {
 	
-	public List<CompagnieAerienneVol> findAll() {
-		List<CompagnieAerienneVol> compagnieAerienneVols = new ArrayList<CompagnieAerienneVol>();
+	public List<Vol> findAll() {
+		List<Vol> vols = new ArrayList<Vol>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -22,9 +23,9 @@ public class CompagnieAerienneVolRepositoryJpa {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<CompagnieAerienneVol> query = em.createQuery("select p from CompagnieAerienneVol p", CompagnieAerienneVol.class);
+			TypedQuery<Vol> query = em.createQuery("select p from Vol p", Vol.class);
 
-			compagnieAerienneVols = query.getResultList();
+			vols = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -39,11 +40,11 @@ public class CompagnieAerienneVolRepositoryJpa {
 			}
 		}
 
-		return compagnieAerienneVols;
+		return vols;
 	}
 
-	public CompagnieAerienneVol findById(Long id) {
-		CompagnieAerienneVol compagnieAerienneVol = null;
+	public Vol findById(Long id) {
+		Vol vol = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -53,7 +54,7 @@ public class CompagnieAerienneVolRepositoryJpa {
 			tx = em.getTransaction();
 			tx.begin();
 
-			compagnieAerienneVol = em.find(CompagnieAerienneVol.class, id);
+			vol = em.find(Vol.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -68,10 +69,10 @@ public class CompagnieAerienneVolRepositoryJpa {
 			}
 		}
 
-		return compagnieAerienneCompagnieAerienneVol;
+		return vol;
 	}
 
-	public CompagnieAerienneVol save(CompagnieAerienneVol obj) {
+	public Vol save(Vol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -98,7 +99,7 @@ public class CompagnieAerienneVolRepositoryJpa {
 		return obj;
 	}
 
-	public void delete(CompagnieAerienneVol obj) {
+	public void delete(Vol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

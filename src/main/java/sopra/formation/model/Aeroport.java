@@ -1,6 +1,7 @@
 package sopra.formation.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,6 +14,11 @@ public class Aeroport {
 	@Column(name="name")
 	private String nom;
 	
+	
+	public Aeroport() {
+		super();
+	}
+
 	public Aeroport(String code, String nom) {
 		this.code = code;
 		this.nom = nom;

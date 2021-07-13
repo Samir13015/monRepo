@@ -1,5 +1,7 @@
 package sopra.formation.repository;
 
-public interface ICompagnieAerienneVolRepository {
+import sopra.formation.model.CompagnieAerienneVol;
+
+public interface ICompagnieAerienneVolRepository extends IRepository <CompagnieAerienneVol, Long>{
 
 }
