@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 	@Entity
-	@Table(name ="Fly")
+	@Table(name ="Flight")
 	public class Vol {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,19 +37,26 @@ import javax.persistence.TemporalType;
 		private StatutVol statut;
 		@Column (name="nbPlaceAvailable")
 		private int nbPlaceDispo;
-		@OneToOne (mappedBy = "depart")
-		private Aeoroport aeroDepart;
-		@OneToOne (mappedBy = "arrivee")
+		@OneToOne 
+		@JoinColumn(name = "depart")
+		private Aeroport aeroDepart;
+		@OneToOne
+		@JoinColumn(name = "arrivee")
 		private Aeroport aeroArrivee;
 		@OneToMany(mappedBy = "billet")
 		private List<Billet> billets = new ArrayList<Billet>();
-		@OneToMany(mappedBy = "compagnieAerienneVol")
+		@OneToMany(mappedBy = "AirlineCompagnyFlight")
 		private List<CompagnieAerienneVol> vols = new ArrayList<CompagnieAerienneVol>();
 		
 		
 
 
-		public Vol(Long id, Date dtDepart, Date dtArrivee, StatutVol statut, int nbPlaceDispo, Aeoroport aeroDepart,
+		public Vol() {
+			super();
+		}
+
+
+		public Vol(Long id, Date dtDepart, Date dtArrivee, StatutVol statut, int nbPlaceDispo, Aeroport aeroDepart,
 				Aeroport aeroArrivee, List<Billet> billets, List<CompagnieAerienneVol> vols) {
 			super();
 			this.id = id;

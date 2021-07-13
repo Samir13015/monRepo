@@ -1,5 +1,7 @@
 package sopra.formation.repository;
 
-public interface IVolRepository {
+import sopra.formation.model.Vol;
+
+public interface IVolRepository extends IRepository<Vol, Long>{
 
 }

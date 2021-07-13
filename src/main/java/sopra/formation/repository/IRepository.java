@@ -11,4 +11,3 @@ public interface IRepository<T, PK> {
 
 	void delete(T obj);
 }
-
